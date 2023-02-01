@@ -1,0 +1,27 @@
+{
+  "name": "desaf-oclase22",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoQuieroGomez/Desaf-oClase22.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiegoQuieroGomez/Desaf-oClase22/issues"
+  },
+  "homepage": "https://github.com/DiegoQuieroGomez/Desaf-oClase22#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.4"
+  }
+}
