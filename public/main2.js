@@ -1,23 +1,27 @@
-const socket = io.connect()
+const socket = io.connect("http://localhost:8080", {forceNew: true})
 
 socket.on("mensajes", function (data){
     console.log(data)
-    render(data)
 })
+
 
 function render(data) {
     var html = data
       .map(function (elem, index) {
-        return (`<div>
+        return `<div>
                    <strong>${elem.correo}</strong>:
                    <em>${elem.alias}</em>
                    <em>${elem.text}
-                </div>`)
+          </div>`
       })
       .join(" ")
   
     document.getElementById("historialMensajes").innerHTML = html
   }
+  
+  socket.on("mensajes", function (data) {
+    render(data)
+  })
   
   function addMensaje(e) {
     let mensaje = {

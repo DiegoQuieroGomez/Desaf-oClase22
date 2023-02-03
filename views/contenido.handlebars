@@ -2,7 +2,7 @@
     <h1>Chat</h1>
     <fieldset style="border: 2px solid black; padding: 10px">
         <legend style="color: blue">Formulario de ingreso</legend>
-        <form action="return addMensaje(this)">
+        <form onsubmit="return addMensaje(this)">
 
             <div class="mb-3">
                 <input type="email" class="form-control" id="id" placeholder="Correo">
@@ -39,7 +39,7 @@
     <div class="contenedor">
         <fieldset style="border: 2px solid black; padding: 10px">
             <legend>Historial de Mensajes</legend>
-            <div class="" id="historiaMensajes"></div>
+            <div class="" id="historialMensajes"></div>
 
         </fieldset>
 
