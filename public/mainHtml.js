@@ -1,31 +1,27 @@
-const socket = io.connect("http://localhost:8080", {forceNew: true})
+const socket = io.connect()
 
 socket.on("mensajes", function (data){
     console.log(data)
+    render(data)
 })
-
 
 function render(data) {
     var html = data
       .map(function (elem, index) {
-        return `<div>
-                   <strong>${elem.correo}</strong>:
+        return (`<div>
+                   <strong>${elem.id}</strong>:
                    <em>${elem.alias}</em>
                    <em>${elem.text}
-          </div>`
+                </div>`)
       })
       .join(" ")
   
     document.getElementById("historialMensajes").innerHTML = html
   }
   
-  socket.on("mensajes", function (data) {
-    render(data)
-  })
-  
   function addMensaje(e) {
     let mensaje = {
-      id: document.getElementById("correo").value,
+      id: document.getElementById("id").value,
       nombre: document.getElementById("nombre").value,
       apellido: document.getElementById("apellido").value,
       edad: document.getElementById("edad").value,
@@ -36,6 +32,7 @@ function render(data) {
   
     socket.emit("nuevoMensaje", mensaje);
 
-    return false;
+    return false
+
   }
   
