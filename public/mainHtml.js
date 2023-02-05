@@ -1,4 +1,6 @@
+//import * as cr from '../connection.js'
 const socket = io.connect()
+
 
 socket.on("mensajes", function (data){
     console.log(data)
@@ -9,9 +11,11 @@ function render(data) {
     var html = data
       .map(function (elem, index) {
         return (`<div>
-                   <strong>${elem.id}</strong>:
-                   <em>${elem.alias}</em>
-                   <em>${elem.text}
+                  <span>
+                   <strong style= "color: Red">${elem.id}</strong>~
+                   <em style= "color: blue">"${elem.alias}"</em>:
+                   <em style= "color: green">${elem.text}
+                  </span>
                 </div>`)
       })
       .join(" ")
@@ -31,6 +35,7 @@ function render(data) {
     }
   
     socket.emit("nuevoMensaje", mensaje);
+    document.getElementById('text').value = " "
 
     return false
 

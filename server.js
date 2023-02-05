@@ -3,6 +3,7 @@ import { engine } from 'express-handlebars'
 import { Server as IOServer } from 'socket.io'
 import { dirname } from 'path'
 import routerProductos from './rutes/routeProducto.js'
+import * as cr from './connection.js'
 
 
 const app = express()
@@ -22,7 +23,6 @@ app.use(urlencoded({extended:true}))
 app.use(express.static('public'))
 
 
-
 let mensajes = [{
       id: 'd@s',
       nombre: 'diego',
@@ -38,7 +38,9 @@ io.on("connection", function (socket) {
     socket.emit('mensajes', mensajes)
 
     socket.on("nuevoMensaje", function (data) {
-        mensajes.push(data);
+        console.log(data)
+        cr.crearMenajes(data)
+        mensajes.push(data)
         console.log(mensajes)
         io.sockets.emit("mensajes", mensajes);
     });
