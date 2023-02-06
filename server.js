@@ -18,7 +18,7 @@ app.engine('handlebars', engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
 app.use('/api/productos-test', routerProductos)
-app.use(json())
+app.use(express.json())
 app.use(urlencoded({extended:true}))
 app.use(express.static('public'))
 
