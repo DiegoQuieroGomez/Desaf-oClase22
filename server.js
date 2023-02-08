@@ -4,6 +4,7 @@ import { Server as IOServer } from 'socket.io'
 import { dirname } from 'path'
 import routerProductos from './rutes/routeProducto.js'
 import * as cr from './connection.js'
+import * as model from './models/mensajes.js'
 
 
 const app = express()
@@ -23,15 +24,7 @@ app.use(urlencoded({extended:true}))
 app.use(express.static('public'))
 
 
-let mensajes = [{
-      id: 'd@s',
-      nombre: 'diego',
-      apellido: 'quiero',
-      edad: 23,
-      alias: 'balt',
-      avatar: 'www.foto.com',
-      text: 'casi podemos',
-}]
+let mensajes = []
 
 io.on("connection", function (socket) {
     console.log('Nuevo cliente conectado')
@@ -39,7 +32,31 @@ io.on("connection", function (socket) {
 
     socket.on("nuevoMensaje", function (data) {
         console.log(data)
-        cr.crearMenajes(data)
+        let mix = data
+        //cr.crearMenajes(data)
+    try {
+        const mensaje = new model.mensajes({
+            author: {
+                id: mix.id,
+                apellido: mix.apellido,
+                nombre: mix.nombre,
+                edad: mix.edad,
+                alias: mix.alias,
+                avatar: mix.avatar,
+            },
+            text: mix.text
+        })
+        console.log(mensaje)
+        mensaje.save()
+
+
+    } catch (error) {
+
+        console.log(error)
+        
+    }
+        
+       
         mensajes.push(data)
         console.log(mensajes)
         io.sockets.emit("mensajes", mensajes);

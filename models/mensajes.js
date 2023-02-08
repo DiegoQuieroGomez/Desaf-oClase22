@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+
 const mensajesCollections = 'mensajes'
 
 const MensajesSchema = new mongoose.Schema({
