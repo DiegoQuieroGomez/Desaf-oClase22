@@ -33,7 +33,7 @@ io.on("connection", function (socket) {
 
     socket.on("nuevoMensaje", function (data) {
         console.log(data)
-        let mix = data
+        //let mix = data
         cr.crearMenajes(data)
     // para save en connection    
     /*try {
