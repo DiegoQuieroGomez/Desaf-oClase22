@@ -1,10 +1,11 @@
 import mongoose from 'mongoose'
 
+mongoose.set('strictQuery', false)
+
 
 const mensajesCollections = 'mensajes'
 
 const MensajesSchema = new mongoose.Schema({
-       mensaje: {
             author: {
                 id: {type: String, require: true, max: 100},
                 nombre: {type: String, require: true, max: 30},
@@ -14,7 +15,7 @@ const MensajesSchema = new mongoose.Schema({
                 avatar: {type: String, require: true, max: 300},
             },
             text: {type: String, require: true, max: 300}       
-       }
+       
 })
 
 export const mensajes = mongoose.model(mensajesCollections, MensajesSchema)

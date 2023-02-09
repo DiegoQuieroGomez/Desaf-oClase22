@@ -25,6 +25,7 @@ app.use(express.static('public'))
 
 
 let mensajes = []
+cr.listarMensajes(mensajes)
 
 io.on("connection", function (socket) {
     console.log('Nuevo cliente conectado')
@@ -33,8 +34,9 @@ io.on("connection", function (socket) {
     socket.on("nuevoMensaje", function (data) {
         console.log(data)
         let mix = data
-        //cr.crearMenajes(data)
-    try {
+        cr.crearMenajes(data)
+    // para save en connection    
+    /*try {
         const mensaje = new model.mensajes({
             author: {
                 id: mix.id,
@@ -49,13 +51,12 @@ io.on("connection", function (socket) {
         console.log(mensaje)
         mensaje.save()
 
-
     } catch (error) {
 
         console.log(error)
         
     }
-        
+    */    
        
         mensajes.push(data)
         console.log(mensajes)
