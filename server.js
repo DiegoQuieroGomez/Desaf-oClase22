@@ -21,7 +21,7 @@ app.set('view engine', 'handlebars')
 app.use('/api/productos-test', routerProductos)
 app.use(express.json())
 app.use(urlencoded({extended:true}))
-app.use(express.static('public'))
+//app.use(express.static('public'))
 
 
 let mensajes = []
@@ -68,13 +68,15 @@ app.get('/', (req, res) => {
     res.render('login')
 })
 
-app.post('/index', (req, res) =>{
-    res.redirect('/')
+app.post('/formChat', (req, res) =>{
+    let user = req.body
+    console.log(user)
+    res.sendFile('/views/index.html')
     
 })
 
-app.get('/index1', (req, res) => {
-    res.render('index')
+app.get('/form', (req, res) => {
+    res.render('view/index')
 })
 
 

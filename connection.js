@@ -10,7 +10,8 @@ mongoose.connect(URL, {}, error => {
 
     export async function listarMensajes(array) {
         try{
-            const mensajes = await model.mensajes.find({})
+        const mensajes = await model.mensajes.find({})
+
             array.push(JSON.stringify(mensajes))
             console.log(mensajes)
             console.log(array)
