@@ -64,8 +64,6 @@ io.on("connection", function (socket) {
     });
 })
 
-
-
 app.get('/', (req, res) => {
-    res.send('index.html')
+    res.render('login')
 })
