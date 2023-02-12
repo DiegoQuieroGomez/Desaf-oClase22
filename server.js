@@ -67,3 +67,14 @@ io.on("connection", function (socket) {
 app.get('/', (req, res) => {
     res.render('login')
 })
+
+app.post('/index', (req, res) =>{
+    res.redirect('/')
+    
+})
+
+app.get('/index1', (req, res) => {
+    res.render('index')
+})
+
+
