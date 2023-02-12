@@ -1,11 +1,11 @@
 import express, {json, urlencoded} from 'express'
 import { engine } from 'express-handlebars'
 import { Server as IOServer } from 'socket.io'
-import { dirname } from 'path'
+import path from 'path'
 import routerProductos from './rutes/routeProducto.js'
-import * as cr from './connection.js'
+import * as cr from './contenedor/connection.js'
 import * as model from './models/mensajes.js'
-
+import * as cu from './contenedor/contenedorUsers.js'
 
 const app = express()
 
@@ -21,8 +21,10 @@ app.set('view engine', 'handlebars')
 app.use('/api/productos-test', routerProductos)
 app.use(express.json())
 app.use(urlencoded({extended:true}))
-//app.use(express.static('public'))
+app.use(express.static('public'))
 
+//cu.crearUsuario("diego","1234")
+//cu.crearUsuario("laura","1234")
 
 let mensajes = []
 cr.listarMensajes(mensajes)
@@ -64,19 +66,24 @@ io.on("connection", function (socket) {
     });
 })
 
-app.get('/', (req, res) => {
-    res.render('login')
+//crear usuarios
+
+
+
+
+app.get('/',(res,req) =>{
+    res.send('index.html')
 })
 
 app.post('/formChat', (req, res) =>{
     let user = req.body
-    console.log(user)
-    res.sendFile('/views/index.html')
     
+    //res.redirect('/view/index2.html')
 })
 
+/*
 app.get('/form', (req, res) => {
-    res.render('view/index')
+    res.redirect("/view/index2.html");
 })
 
-
+*/

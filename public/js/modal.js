@@ -1,16 +1,9 @@
+const btnIngresar = document.querySelector('#btnIngresar')
 
-
-let btnIngresar = document.getElementById('btnLogin')
-let diag = document.getElementById('logDialog')
-let btnIngresarUsuario = document.getElementById('ingresarUsuario')
 
 btnIngresar.addEventListener('click', ()=>{
-  console.log('funciona')
-  diag.showModal()
-})
-
-btnIngresarUsuario.addEventListener('click', ()=>{
     let usuario = document.getElementById('usuario').value
+    console.log(usuario)
     let contenedorUser = document.getElementById('divUserContainer')
 
     contenedorUser.innerHTML =`
@@ -20,10 +13,7 @@ btnIngresarUsuario.addEventListener('click', ()=>{
     contenedorUser.removeAttribute("hidden")
     btnIngresar.style.display = 'none'
 
-    
 })
-
-
 
 function deslog(){
     //let btnDeslogeo = document.querySelector('#btnDeslog')

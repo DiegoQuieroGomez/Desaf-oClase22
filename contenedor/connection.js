@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
-import * as model from "./models/mensajes.js"
+import * as model from "../models/mensajes.js"
+
 
 
 const URL = 'mongodb+srv://coder:coder123456@cluster0.x6oicff.mongodb.net/chat?retryWrites=true&w=majority'
@@ -38,6 +39,5 @@ mongoose.connect(URL, {}, error => {
         
         }).then(() => console.log('Mensaje cargado correctamente'))
        
-
     }
 
