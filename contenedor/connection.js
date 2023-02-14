@@ -14,8 +14,8 @@ mongoose.connect(URL, {}, error => {
         const mensajes = await model.mensajes.find({})
 
             array.push(JSON.stringify(mensajes))
-            console.log(mensajes)
-            console.log(array)
+            //console.log(mensajes)
+            //console.log(array)
         }catch(error){
             console.log(error)
         }
